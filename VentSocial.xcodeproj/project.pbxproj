@@ -7,15 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C25E6E242A6D712800542BBF /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E6E232A6D712800542BBF /* PostModel.swift */; };
+		C25E6E262A6D718200542BBF /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E6E252A6D718200542BBF /* PostViewModel.swift */; };
+		C25E6E282A6D73F900542BBF /* FeedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E6E272A6D73F900542BBF /* FeedImageViewModel.swift */; };
+		C262A47E2A6DB3310056FB81 /* SearchbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C262A47D2A6DB3310056FB81 /* SearchbarView.swift */; };
+		C262A4802A6DB4630056FB81 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C262A47F2A6DB4620056FB81 /* UserView.swift */; };
+		C262A4832A6DB5F60056FB81 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C262A4822A6DB5F60056FB81 /* UserInfoView.swift */; };
+		C262A4852A6E0E210056FB81 /* UserMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C262A4842A6E0E210056FB81 /* UserMessagesView.swift */; };
+		C262A4872A6E12040056FB81 /* LikedPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C262A4862A6E12040056FB81 /* LikedPostsView.swift */; };
+		C262A4892A6F548A0056FB81 /* UserCreatePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C262A4882A6F548A0056FB81 /* UserCreatePost.swift */; };
+		C2746ADE2A6C420100CB3888 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2746ADD2A6C420100CB3888 /* MainView.swift */; };
+		C2835A542A6C4DDE0048C961 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2835A532A6C4DDE0048C961 /* HomeView.swift */; };
 		C29C92822A6B970E002D7DAB /* VentSocialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C92812A6B970E002D7DAB /* VentSocialApp.swift */; };
 		C29C92842A6B970E002D7DAB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C92832A6B970E002D7DAB /* ContentView.swift */; };
 		C29C92862A6B970F002D7DAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C29C92852A6B970F002D7DAB /* Assets.xcassets */; };
 		C29C92892A6B970F002D7DAB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C29C92882A6B970F002D7DAB /* Preview Assets.xcassets */; };
 		C29C928B2A6B970F002D7DAB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C928A2A6B970F002D7DAB /* Persistence.swift */; };
 		C29C928E2A6B970F002D7DAB /* VentSocial.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C29C928C2A6B970F002D7DAB /* VentSocial.xcdatamodeld */; };
+		C29C92982A6B977B002D7DAB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C92972A6B977B002D7DAB /* OnboardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C25E6E232A6D712800542BBF /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		C25E6E252A6D718200542BBF /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		C25E6E272A6D73F900542BBF /* FeedImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageViewModel.swift; sourceTree = "<group>"; };
+		C262A47D2A6DB3310056FB81 /* SearchbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchbarView.swift; sourceTree = "<group>"; };
+		C262A47F2A6DB4620056FB81 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		C262A4822A6DB5F60056FB81 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		C262A4842A6E0E210056FB81 /* UserMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMessagesView.swift; sourceTree = "<group>"; };
+		C262A4862A6E12040056FB81 /* LikedPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPostsView.swift; sourceTree = "<group>"; };
+		C262A4882A6F548A0056FB81 /* UserCreatePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreatePost.swift; sourceTree = "<group>"; };
+		C2746ADD2A6C420100CB3888 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		C2835A532A6C4DDE0048C961 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C29C927E2A6B970E002D7DAB /* VentSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VentSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29C92812A6B970E002D7DAB /* VentSocialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VentSocialApp.swift; sourceTree = "<group>"; };
 		C29C92832A6B970E002D7DAB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -23,6 +46,7 @@
 		C29C92882A6B970F002D7DAB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C29C928A2A6B970F002D7DAB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		C29C928D2A6B970F002D7DAB /* VentSocial.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VentSocial.xcdatamodel; sourceTree = "<group>"; };
+		C29C92972A6B977B002D7DAB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +60,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C262A4812A6DB5E30056FB81 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				C262A4822A6DB5F60056FB81 /* UserInfoView.swift */,
+				C262A4882A6F548A0056FB81 /* UserCreatePost.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		C29C92752A6B970E002D7DAB = {
 			isa = PBXGroup;
 			children = (
@@ -55,8 +88,11 @@
 		C29C92802A6B970E002D7DAB /* VentSocial */ = {
 			isa = PBXGroup;
 			children = (
+				C262A4812A6DB5E30056FB81 /* Util */,
+				C29C92962A6B9759002D7DAB /* Models */,
+				C29C92952A6B9750002D7DAB /* ViewModels */,
+				C29C92942A6B974A002D7DAB /* Views */,
 				C29C92812A6B970E002D7DAB /* VentSocialApp.swift */,
-				C29C92832A6B970E002D7DAB /* ContentView.swift */,
 				C29C92852A6B970F002D7DAB /* Assets.xcassets */,
 				C29C928A2A6B970F002D7DAB /* Persistence.swift */,
 				C29C928C2A6B970F002D7DAB /* VentSocial.xcdatamodeld */,
@@ -71,6 +107,38 @@
 				C29C92882A6B970F002D7DAB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C29C92942A6B974A002D7DAB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C29C92832A6B970E002D7DAB /* ContentView.swift */,
+				C29C92972A6B977B002D7DAB /* OnboardingView.swift */,
+				C2746ADD2A6C420100CB3888 /* MainView.swift */,
+				C2835A532A6C4DDE0048C961 /* HomeView.swift */,
+				C262A47D2A6DB3310056FB81 /* SearchbarView.swift */,
+				C262A47F2A6DB4620056FB81 /* UserView.swift */,
+				C262A4842A6E0E210056FB81 /* UserMessagesView.swift */,
+				C262A4862A6E12040056FB81 /* LikedPostsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C29C92952A6B9750002D7DAB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C25E6E252A6D718200542BBF /* PostViewModel.swift */,
+				C25E6E272A6D73F900542BBF /* FeedImageViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C29C92962A6B9759002D7DAB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C25E6E232A6D712800542BBF /* PostModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,10 +211,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C262A47E2A6DB3310056FB81 /* SearchbarView.swift in Sources */,
 				C29C928B2A6B970F002D7DAB /* Persistence.swift in Sources */,
+				C25E6E242A6D712800542BBF /* PostModel.swift in Sources */,
+				C2835A542A6C4DDE0048C961 /* HomeView.swift in Sources */,
+				C2746ADE2A6C420100CB3888 /* MainView.swift in Sources */,
+				C25E6E282A6D73F900542BBF /* FeedImageViewModel.swift in Sources */,
 				C29C92842A6B970E002D7DAB /* ContentView.swift in Sources */,
+				C262A4872A6E12040056FB81 /* LikedPostsView.swift in Sources */,
+				C262A4892A6F548A0056FB81 /* UserCreatePost.swift in Sources */,
+				C262A4802A6DB4630056FB81 /* UserView.swift in Sources */,
 				C29C92822A6B970E002D7DAB /* VentSocialApp.swift in Sources */,
+				C25E6E262A6D718200542BBF /* PostViewModel.swift in Sources */,
+				C262A4832A6DB5F60056FB81 /* UserInfoView.swift in Sources */,
+				C29C92982A6B977B002D7DAB /* OnboardingView.swift in Sources */,
 				C29C928E2A6B970F002D7DAB /* VentSocial.xcdatamodeld in Sources */,
+				C262A4852A6E0E210056FB81 /* UserMessagesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,12 +9,24 @@ import SwiftUI
 
 @main
 struct VentSocialApp: App {
+    @AppStorage("isOnboarding") private var isOnboarding:Bool = true
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            if isOnboarding{
+                OnboardingView()
+                
+            }
+            else {
+              MainView()
+            }
+
         }
     }
 }
+
+
+
+//            ContentView()
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
