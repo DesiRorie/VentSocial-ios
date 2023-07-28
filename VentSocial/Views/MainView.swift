@@ -96,12 +96,40 @@ struct TopBar: View {
         }.padding(.horizontal)
     }
 }
+struct UserTopBar: View {
+    var body: some View {
+        HStack{
+            Text("DesiRorie123").font(.system(size: 25)).bold()
+            Spacer()
+            NavigationLink(destination: UserMessagesView()) {
+                Label(
+                    title: { Text("Liked Posts") },
+                    icon: { Image(systemName: "heart").font(.system(size: 25)) }
+                ).foregroundColor(.white)
+                    .labelStyle(.iconOnly)
+                //                    .foregroundColor(.white)
+            }
+            
+            Spacer().frame(width: 10)
+            //            NavigationLink("Hello") {
+            //                UserMessagesView()
+            //            }
+            NavigationLink(destination: UserMessagesView()) {
+                Label(
+                    title: { Text("Messages") },
+                    icon: { Image(systemName: "message").font(.system(size: 25)) }
+                ).foregroundColor(.white)
+                    .labelStyle(.iconOnly)
+            }
+        }.padding(.horizontal)
+    }
+}
 
 struct StoryCircle:View{
     var body: some View {
         ZStack{
             Circle()
-                .stroke(LinearGradient(gradient: Gradient(colors: [.red, .orange]), startPoint: .leading, endPoint: .trailing), lineWidth: 8)
+                .stroke(LinearGradient(gradient: Gradient(colors: [.red, .orange]), startPoint: .leading, endPoint: .trailing), lineWidth: 6)
                 .frame(width: 75)
             
             

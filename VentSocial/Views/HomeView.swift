@@ -38,6 +38,7 @@ struct HomeView: View {
                                             Image(uiImage: image)
                                                 .resizable()
                                                 .scaledToFill()
+
                                         }
                                         Spacer().frame(height: 25)
                                     }

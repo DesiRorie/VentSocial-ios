@@ -19,7 +19,7 @@ class FeedImageViewModel: ObservableObject{
     @Published var imageStore: [UIImage] = []
     @Published var imageInfo:String = ""
     @Published var isFetching:Bool = false
-    @Published var postsStore:[String] = ["1"]
+    @Published var postsStore:[String] = []
     @Published var postIsLiked: Bool = false
     @Published var allMemeImages:[UIImage] = []
     enum CombinedItem:Hashable {

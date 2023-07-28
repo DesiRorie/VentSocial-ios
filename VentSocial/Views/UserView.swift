@@ -14,9 +14,9 @@ struct UserView: View {
     var body: some View {
         VStack{
             HStack {
-                TopBar()
+                UserTopBar()
                 Image(systemName: "plus").font(.headline)
-                    .padding(.horizontal,10)
+                    .padding(.horizontal,20)
                     .onTapGesture {
                         isPresented = !isPresented
                     }

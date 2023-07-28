@@ -10,8 +10,20 @@ import SwiftUI
 struct UserInfoView: View {
     var body: some View {
         HStack(spacing:20){
-            Circle()
-                .frame(width: 75)
+            ZStack {
+                
+                Image("profilePicture")
+                    .resizable()
+
+                    .scaledToFill()
+                    .frame(width: 90,height: 90)
+                    .clipShape(Circle())
+                Circle()
+                    .stroke(Color(uiColor: .gray),lineWidth:3)
+                    .frame(width: 90)
+                    
+                
+            }
             Spacer().frame(width: 20)
                 
             HStack(spacing:30){
