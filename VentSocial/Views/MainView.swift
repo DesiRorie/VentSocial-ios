@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    @StateObject private var viewModel = FeedImageViewModel()
     @State private var tabSelection: Int = 0
     @Environment(\.colorScheme) var colorScheme
     //    enum Tab {
@@ -22,7 +23,7 @@ struct MainView: View {
                     
                     TabView(selection: $tabSelection) {
                         
-                        HomeView()
+                        HomeView(viewModel:viewModel)
                             .tabItem {
                                 Image(systemName: "house.fill")
                                 
@@ -40,7 +41,7 @@ struct MainView: View {
                         
                         
                         VStack {
-                            UserView()
+                            UserView(viewModel: viewModel)
                         }
                         .tabItem {
                             Image(systemName: "person.fill")
@@ -48,12 +49,12 @@ struct MainView: View {
                             
                         }
                         .toolbarBackground(colorScheme == .dark ? Color.black : Color.white, for: .tabBar)
-                            .tag(2)
+                        .tag(2)
                     }
                     .accentColor(colorScheme == .dark ? Color.white : Color.black)
                     
                 }
-              
+                
             }
         }
         
@@ -77,7 +78,7 @@ struct TopBar: View {
                     title: { Text("Liked Posts") },
                     icon: { Image(systemName: "heart").font(.system(size: 25)) }
                 ).foregroundColor(.white)
-                .labelStyle(.iconOnly)
+                    .labelStyle(.iconOnly)
                 //                    .foregroundColor(.white)
             }
             
@@ -90,7 +91,7 @@ struct TopBar: View {
                     title: { Text("Messages") },
                     icon: { Image(systemName: "message").font(.system(size: 25)) }
                 ).foregroundColor(.white)
-                .labelStyle(.iconOnly)
+                    .labelStyle(.iconOnly)
             }
         }.padding(.horizontal)
     }
@@ -101,24 +102,46 @@ struct StoryCircle:View{
         ZStack{
             Circle()
                 .stroke(LinearGradient(gradient: Gradient(colors: [.red, .orange]), startPoint: .leading, endPoint: .trailing), lineWidth: 8)
-            
                 .frame(width: 75)
-            Circle()
             
-                .frame(width: 75)
             
         }
+        
+        
+        
+        
+        
+        
     }
 }
 
+
 struct StoryView: View {
+    @ObservedObject var viewModel:FeedImageViewModel
     var body: some View {
         HStack{
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack{
-                    ForEach(0..<10) { profileStory in
-                        StoryCircle().padding()
-                        
+                    //                    ForEach(viewModel.imageStore, id: \.self) { image in
+                    //                        ZStack{
+                    //                            StoryCircle(viewModel: FeedImageViewModel()).padding()
+                    //
+                    //                        }
+                    //
+                    //                    }
+                    ForEach(viewModel.imageStore,id: \.self) { image in
+                        HStack{ZStack{
+                            StoryCircle()
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 75)
+                                .clipShape(Circle())
+                                
+                                
+                        }.padding(5)
+                           
+                        }
                     }
                 }
             }

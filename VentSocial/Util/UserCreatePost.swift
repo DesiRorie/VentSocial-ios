@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserCreatePost: View {
-    @StateObject private var viewModel = FeedImageViewModel()
+    @ObservedObject var viewModel:FeedImageViewModel
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) private var dismiss
     @State private var currentPostString: String = ""
@@ -46,7 +46,7 @@ struct UserCreatePost: View {
                     viewModel.addPost(currentPostString)
                     currentPostString = ""
                 } label: {
-                    Text("Post").foregroundColor(.white)
+                    Text("Post")
                 }
 
                 ForEach(viewModel.postsStore, id: \.self) { post in
@@ -61,9 +61,9 @@ struct UserCreatePost: View {
         }
     }
 }
-
-struct UserCreatePost_Previews: PreviewProvider {
-    static var previews: some View {
-        UserCreatePost()
-    }
-}
+//
+//struct UserCreatePost_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UserCreatePost(viewModel: FeedImageViewModel())
+//    }
+//}

@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var viewModel = FeedImageViewModel()
+    @ObservedObject var viewModel:FeedImageViewModel
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         NavigationStack {
             VStack{
                 VStack{
                     TopBar()
-                    StoryView()
+                    StoryView(viewModel:viewModel)
                     Rectangle()
                         .fill(.gray)
                         .frame(height: 0.18)
@@ -49,11 +49,10 @@ struct HomeView: View {
                                 }
                                 
                             }
-                            .onAppear{
-                                Task{
-                                    await viewModel.fetchImage()}
-                            }
                             
+                        }
+                        .refreshable {
+                           await viewModel.refreshImages()
                         }
                         .tag(0)
                     }
@@ -77,14 +76,19 @@ struct HomeView: View {
                 
                 }.tabViewStyle(.page(indexDisplayMode: .never))
           
+            }.onAppear{
+                Task{
+                    await viewModel.fetchImage()}
             }
+
         }
     }
 }
 
 
 struct HomeView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        HomeView()
+        HomeView(viewModel: FeedImageViewModel())
     }
 }
