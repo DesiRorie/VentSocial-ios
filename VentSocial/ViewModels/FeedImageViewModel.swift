@@ -13,7 +13,16 @@ struct Meme: Identifiable {
     let url: URL
 }
 
-
+struct UserPost: Hashable,Identifiable{
+    let id: UUID
+    let timestamp:Date
+    let text:String
+    var formattedHour: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a" // Format to display only the hour and minute
+        return dateFormatter.string(from: timestamp)
+    }
+}
 class FeedImageViewModel: ObservableObject{
     @Published var image:UIImage? = nil
     @Published var imageStore: [UIImage] = []
@@ -22,6 +31,7 @@ class FeedImageViewModel: ObservableObject{
     @Published var postsStore:[String] = []
     @Published var postIsLiked: Bool = false
     @Published var allMemeImages:[UIImage] = []
+    @Published var postsUserStore:[UserPost] = []
     enum CombinedItem:Hashable {
         case image(UIImage)
         case post(String)
@@ -40,7 +50,9 @@ class FeedImageViewModel: ObservableObject{
     }
     
     func addPost(_ postInfo:String) {
-        postsStore.append(postInfo)
+        
+        let newPost = UserPost(id: UUID(), timestamp: Date(), text: postInfo )
+        postsUserStore.append(newPost)
     }
     
     @MainActor func fetchImage() async{

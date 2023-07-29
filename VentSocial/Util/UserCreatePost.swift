@@ -12,6 +12,7 @@ struct UserCreatePost: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) private var dismiss
     @State private var currentPostString: String = ""
+    @State private var postedNotification:Bool = false
 
     var body: some View {
         ZStack{
@@ -21,6 +22,7 @@ struct UserCreatePost: View {
                     Text("Cancel")
                         .onTapGesture {
                                 dismiss()
+                            postedNotification = false
                         }
                     Spacer()
                         .frame(width: 90)
@@ -45,14 +47,13 @@ struct UserCreatePost: View {
                 Button {
                     viewModel.addPost(currentPostString)
                     currentPostString = ""
+                    postedNotification.toggle()
                 } label: {
                     Text("Post").bold()
                 }
-
-                ForEach(viewModel.postsStore, id: \.self) { post in
-                    Text(post)
-                }
-    
+                Spacer()
+                    .frame(height: 50)
+                postedNotification ? Text("Posted.").italic() : nil
                     
                 Spacer()
                         
@@ -61,9 +62,9 @@ struct UserCreatePost: View {
         }
     }
 }
-//
-//struct UserCreatePost_Previews: PreviewProvider {
-//    static var previews: some View {
-//        UserCreatePost(viewModel: FeedImageViewModel())
-//    }
-//}
+
+struct UserCreatePost_Previews: PreviewProvider {
+    static var previews: some View {
+        UserCreatePost(viewModel: FeedImageViewModel())
+    }
+}
