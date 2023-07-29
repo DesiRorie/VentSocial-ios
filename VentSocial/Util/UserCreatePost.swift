@@ -46,7 +46,7 @@ struct UserCreatePost: View {
                     viewModel.addPost(currentPostString)
                     currentPostString = ""
                 } label: {
-                    Text("Post")
+                    Text("Post").bold()
                 }
 
                 ForEach(viewModel.postsStore, id: \.self) { post in

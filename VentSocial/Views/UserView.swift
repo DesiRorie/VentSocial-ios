@@ -20,8 +20,6 @@ struct UserView: View {
             HStack {
                 UserTopBar()
                 Image(systemName: "plus").font(.system(size: 25))
-//                    .padding(.horizontal,20)
-                Spacer()
                     .onTapGesture {
                         isPresented = !isPresented
                     }
@@ -29,6 +27,9 @@ struct UserView: View {
                         UserCreatePost(viewModel: viewModel)
                             .presentationDetents([.medium,.large])
                     }
+//                    .padding(.horizontal,20)
+                Spacer()
+                    
                 Spacer()
                     
             }

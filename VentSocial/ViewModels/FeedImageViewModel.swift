@@ -26,7 +26,8 @@ class FeedImageViewModel: ObservableObject{
         case image(UIImage)
         case post(String)
     }
-    
+
+
     var combinedArray: [CombinedItem] {
         var array: [CombinedItem] = []
         array.append(contentsOf: imageStore.map(CombinedItem.image))

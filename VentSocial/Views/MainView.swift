@@ -11,11 +11,6 @@ struct MainView: View {
     @StateObject private var viewModel = FeedImageViewModel()
     @State private var tabSelection: Int = 0
     @Environment(\.colorScheme) var colorScheme
-    //    enum Tab {
-    //        case home
-    //        case search
-    //        case user
-    //    }
     var body: some View {
         ZStack{
             VStack{
