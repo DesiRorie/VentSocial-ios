@@ -14,10 +14,10 @@ struct UserView: View {
         GridItem(.flexible(),spacing: 10),
     ]
     func getCurrentTime() -> String {
-         let dateFormatter = DateFormatter()
-         dateFormatter.timeStyle = .short
-         return dateFormatter.string(from: Date())
-     }
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .short
+        return dateFormatter.string(from: Date())
+    }
     
     @ObservedObject var viewModel:FeedImageViewModel
     @State private var posts:[String] = ["Desi","Rorie","Kaylee","Perrin"]
@@ -34,11 +34,11 @@ struct UserView: View {
                         UserCreatePost(viewModel: viewModel)
                             .presentationDetents([.medium,.large])
                     }
-//                    .padding(.horizontal,20)
+                //                    .padding(.horizontal,20)
                 Spacer()
-                    
+                
                 Spacer()
-                    
+                
             }
             
             .padding(0)
@@ -46,21 +46,30 @@ struct UserView: View {
                 .frame(height: 30)
             UserInfoView()
             
-                Spacer()
+            Spacer()
                 .frame(height: 30)
             VStack {
                 Text("Your Posts").bold()
-                 ScrollView{
+                ScrollView{
                     LazyVGrid(columns: columns,spacing: 20) {
                         
                         
-                        ForEach(viewModel.postsUserStore, id: \.self) { post in
+                        ForEach(viewModel.postsUserStore, id: \.id) { post in
                             VStack{
                                 Text(post.text)
                                 Text("\(post.formattedHour)")
+                                Spacer()
+                                    .frame(height: 5)
+                                Image(systemName: "trash")
+                                    .foregroundColor(.red)
+                                    .onLongPressGesture(minimumDuration: 1) {
+                                        viewModel.postsUserStore.removeAll { $0.id == post.id }
+                                    }
+                                
                             }
+                            
+                            
                         }
-                    
                         
                     }
                 }
