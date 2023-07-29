@@ -31,7 +31,7 @@ struct MainView: View {
                             .tag(0)
                         
                         VStack {
-                            SearchbarView()
+                            SearchbarView(viewModel:viewModel)
                         }
                         .tabItem {
                             Image(systemName: "magnifyingglass")
@@ -97,6 +97,7 @@ struct TopBar: View {
     }
 }
 struct UserTopBar: View {
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         HStack{
             Text("DesiRorie123").font(.system(size: 25)).bold()
@@ -105,23 +106,21 @@ struct UserTopBar: View {
                 Label(
                     title: { Text("Liked Posts") },
                     icon: { Image(systemName: "heart").font(.system(size: 25)) }
-                ).foregroundColor(.white)
+                ).foregroundColor(colorScheme == .dark ? .white : .black)
                     .labelStyle(.iconOnly)
-                //                    .foregroundColor(.white)
             }
             
             Spacer().frame(width: 10)
-            //            NavigationLink("Hello") {
-            //                UserMessagesView()
-            //            }
+          
             NavigationLink(destination: UserMessagesView()) {
                 Label(
                     title: { Text("Messages") },
                     icon: { Image(systemName: "message").font(.system(size: 25)) }
-                ).foregroundColor(.white)
+                ).foregroundColor(colorScheme == .dark ? .white : .black)
                     .labelStyle(.iconOnly)
             }
-        }.padding(.horizontal)
+        }
+
     }
 }
 

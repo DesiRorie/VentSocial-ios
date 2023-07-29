@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct UserView: View {
+    var columns =   [
+        GridItem(.fixed(200),spacing: 10),
+        GridItem(.fixed(200))
+    ]
     @ObservedObject var viewModel:FeedImageViewModel
     @State private var posts:[String] = ["Desi","Rorie","Kaylee","Perrin"]
     @State private var isPresented:Bool = false
@@ -15,8 +19,9 @@ struct UserView: View {
         VStack{
             HStack {
                 UserTopBar()
-                Image(systemName: "plus").font(.headline)
-                    .padding(.horizontal,20)
+                Image(systemName: "plus").font(.system(size: 25))
+//                    .padding(.horizontal,20)
+                Spacer()
                     .onTapGesture {
                         isPresented = !isPresented
                     }
@@ -25,39 +30,41 @@ struct UserView: View {
                             .presentationDetents([.medium,.large])
                     }
                 Spacer()
+                    
             }
+            .padding(0)
             Spacer()
                 .frame(height: 30)
             UserInfoView()
             Spacer()
-            ScrollView(showsIndicators: false){
-                VStack { if !viewModel.allMemeImages.isEmpty{
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 200))]){
-                        ForEach(viewModel.allMemeImages,id: \.self) { memeImage in
-                            ZStack{
-                                Rectangle()
-                                    
-                                Image(uiImage: memeImage)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .aspectRatio(contentMode: .fit)
-                                //                                .frame(minWidth: 200,maxWidth: 200,minHeight:200,maxHeight:200)
-                                    .frame(width: 200, height: 200)
-                            }
-                                
-                                
-                        }
-                    }
-                }else{
-                    ProgressView()
-                }
-                }   .onAppear {
-                    Task{
-                        await   viewModel.fetchMemeImage()
-                 
-                    }
-                }
-            }
+//            ScrollView(showsIndicators: false){
+//                VStack { if !viewModel.allMemeImages.isEmpty{
+//                    LazyVGrid(columns:columns)
+//                    {
+//                        ForEach(viewModel.allMemeImages,id: \.self) { memeImage in
+//                            ZStack{
+//                                Rectangle()
+//                                Image(uiImage: memeImage)
+//                                    .resizable()
+//                                    .scaledToFit()
+//                                    .aspectRatio(contentMode: .fit)
+//                                //                                .frame(minWidth: 200,maxWidth: 200,minHeight:200,maxHeight:200)
+//                                    .frame(width: 150, height: 150)
+//                            }
+//                            
+//                            
+//                        }
+//                    }
+//                }else{
+//                    ProgressView()
+//                }
+//                }   .onAppear {
+//                    Task{
+//                        await   viewModel.fetchMemeImage()
+//                        
+//                    }
+//                }
+//            }
         }
         
     }

@@ -38,7 +38,6 @@ struct HomeView: View {
                                             Image(uiImage: image)
                                                 .resizable()
                                                 .scaledToFill()
-
                                         }
                                         Spacer().frame(height: 25)
                                     }
@@ -53,7 +52,7 @@ struct HomeView: View {
                             
                         }
                         .refreshable {
-                           await viewModel.refreshImages()
+                                await viewModel.refreshImages()
                         }
                         .tag(0)
                     }
