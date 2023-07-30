@@ -56,7 +56,7 @@ struct SearchbarView: View {
                                                 .cancel(Text("Cancel"))
                                             ])
                                         }
-//                                    .frame(width: 133, height: 133)
+                                    .frame(width: 133, height: 133)
                             }
                             .zIndex(selectedImage == memeImage ? 1 : 0)
                         }

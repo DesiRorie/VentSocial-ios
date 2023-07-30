@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct UserView: View {
+    @Environment(\.colorScheme) var colorScheme
     var columns =   [
         GridItem(.flexible(),spacing: 10),
         GridItem(.flexible(),spacing: 10),
@@ -51,27 +52,41 @@ struct UserView: View {
             VStack {
                 Text("Your Posts").bold()
                 ScrollView{
-                    LazyVGrid(columns: columns,spacing: 20) {
+                    LazyVGrid(columns: columns,spacing: 10) {
                         
                         
                         ForEach(viewModel.postsUserStore, id: \.id) { post in
-                            VStack{
-                                Text(post.text)
-                                Text("\(post.formattedHour)")
-                                Spacer()
-                                    .frame(height: 5)
-                                Image(systemName: "trash")
-                                    .foregroundColor(.red)
-                                    .onLongPressGesture(minimumDuration: 1) {
-                                        viewModel.postsUserStore.removeAll { $0.id == post.id }
-                                    }
-                                
-                            }
                             
+                                VStack{
+                                    Text(post.text)
+                                    Text("\(post.formattedHour)")
+                                    Spacer()
+                                        .frame(height: 5)
+                                    Image(systemName: "trash")
+                                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                                        .onLongPressGesture(minimumDuration: 1) {
+                                            viewModel.postsUserStore.removeAll { $0.id == post.id }
+                                        }
+                                }
+                                .frame(maxWidth: 133)
+                                .frame( maxWidth: 133, minHeight: 100, maxHeight: .none)
+                                
+                                
+                                
+                            
+                            .padding()
+                                .cornerRadius(10)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .strokeBorder(lineWidth: 2)
+                                        
+                                    
+                                        
+                            )
                             
                         }
                         
-                    }
+                    }.padding()
                 }
             }
             Spacer()
