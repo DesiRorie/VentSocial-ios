@@ -14,7 +14,7 @@ struct HomeView: View {
         NavigationStack {
             VStack{
                 VStack{
-                    TopBar()
+                    TopBar(viewModel: viewModel)
                     StoryView(viewModel:viewModel)
                     Rectangle()
                         .fill(.gray)
@@ -34,10 +34,15 @@ struct HomeView: View {
                                 }
                                 LazyVStack {
                                     ForEach(viewModel.imageStore, id:\.self) { image in
-                                        ZStack{
+                                        VStack{
                                             Image(uiImage: image)
                                                 .resizable()
                                                 .scaledToFill()
+                                            Image(systemName: "heart")
+                                                .onTapGesture {
+                                                    viewModel.addLikedMeme(likedImage: image)
+                                                }
+                                            
                                         }
                                         Spacer().frame(height: 25)
                                     }

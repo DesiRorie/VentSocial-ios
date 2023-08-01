@@ -19,7 +19,7 @@ struct UserPost: Hashable,Identifiable{
     let text:String
     var formattedHour: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "h:mm a" // Format to display only the hour and minute
+        dateFormatter.dateFormat = "h:mm a"
         return dateFormatter.string(from: timestamp)
     }
 }
@@ -32,12 +32,16 @@ class FeedImageViewModel: ObservableObject{
     @Published var postIsLiked: Bool = false
     @Published var allMemeImages:[UIImage] = []
     @Published var postsUserStore:[UserPost] = []
+    @Published var LikedMemeStore:[UIImage] = []
+    
     enum CombinedItem:Hashable {
         case image(UIImage)
         case post(String)
     }
 
-
+    func addLikedMeme(likedImage:UIImage){
+        LikedMemeStore.append(likedImage)
+    }
     var combinedArray: [CombinedItem] {
         var array: [CombinedItem] = []
         array.append(contentsOf: imageStore.map(CombinedItem.image))

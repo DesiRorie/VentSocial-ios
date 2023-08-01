@@ -24,72 +24,64 @@ struct UserView: View {
     @State private var posts:[String] = ["Desi","Rorie","Kaylee","Perrin"]
     @State private var isPresented:Bool = false
     var body: some View {
-        VStack{
-            HStack {
-                UserTopBar()
-                Image(systemName: "plus").font(.system(size: 25))
-                    .onTapGesture {
-                        isPresented = !isPresented
-                    }
-                    .sheet(isPresented: $isPresented) {
-                        UserCreatePost(viewModel: viewModel)
-                            .presentationDetents([.medium,.large])
-                    }
-                //                    .padding(.horizontal,20)
-                Spacer()
-                
-                Spacer()
-                
-            }
-            
-            .padding(0)
-            Spacer()
-                .frame(height: 30)
-            UserInfoView()
-            
-            Spacer()
-                .frame(height: 30)
-            VStack {
-                Text("Your Posts").bold()
-                ScrollView{
-                    LazyVGrid(columns: columns,spacing: 10) {
-                        
-                        
-                        ForEach(viewModel.postsUserStore, id: \.id) { post in
-                            
-                                VStack{
-                                    Text(post.text)
-                                    Text("\(post.formattedHour)")
-                                    Spacer()
-                                        .frame(height: 5)
-                                    Image(systemName: "trash")
-                                        .foregroundColor(colorScheme == .dark ? .white : .black)
-                                        .onLongPressGesture(minimumDuration: 1) {
-                                            viewModel.postsUserStore.removeAll { $0.id == post.id }
-                                        }
-                                }
-                                .frame(maxWidth: 133)
-                                .frame( maxWidth: 133, minHeight: 100, maxHeight: .none)
-                                
-                                
-                                
-                            
-                            .padding()
-                                .cornerRadius(10)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .strokeBorder(lineWidth: 2)
-                                        
-                                    
-                                        
-                            )
-                            
-                        }
-                        
-                    }.padding()
+        NavigationStack {
+            VStack{
+                TopBar(viewModel: viewModel)
+                HStack {
+
+                    Spacer()
+                    
+                    Spacer()
+                    
                 }
+                Spacer()
+                    .frame(height: 30)
+                UserInfoView()
+                
+                Spacer()
+                    .frame(height: 30)
+                VStack {
+                    viewModel.postsUserStore.isEmpty ? Text("You have no posts").bold() : Text("Your posts").bold()
+                    ScrollView{
+                        LazyVGrid(columns: columns,spacing: 10) {
+                            
+                            
+                            ForEach(viewModel.postsUserStore, id: \.id) { post in
+                                
+                                    VStack{
+                                        Text(post.text)
+                                        Text("\(post.formattedHour)")
+                                        Spacer()
+                                            .frame(height: 5)
+                                        Image(systemName: "trash")
+                                            .foregroundColor(colorScheme == .dark ? .white : .black)
+                                            .onLongPressGesture(minimumDuration: 1) {
+                                                viewModel.postsUserStore.removeAll { $0.id == post.id }
+                                            }
+                                    }
+                                    .frame(maxWidth: 133)
+                                    .frame( maxWidth: 133, minHeight: 100, maxHeight: .none)
+                                    
+                                    
+                                    
+                                
+                                .padding()
+                                    .cornerRadius(10)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .strokeBorder(lineWidth: 2)
+                                            
+                                        
+                                            
+                                )
+                                
+                            }
+                            
+                        }.padding()
+                    }
+                }
+                Spacer()
             }
-            Spacer()
         }
         
     }

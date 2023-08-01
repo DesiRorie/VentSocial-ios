@@ -16,6 +16,8 @@
 		C262A4852A6E0E210056FB81 /* UserMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C262A4842A6E0E210056FB81 /* UserMessagesView.swift */; };
 		C262A4872A6E12040056FB81 /* LikedPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C262A4862A6E12040056FB81 /* LikedPostsView.swift */; };
 		C262A4892A6F548A0056FB81 /* UserCreatePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C262A4882A6F548A0056FB81 /* UserCreatePost.swift */; };
+		C264DA962A785EDC00E087E3 /* prsctice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264DA952A785EDC00E087E3 /* prsctice.swift */; };
+		C264DA982A78980600E087E3 /* LikedMemesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264DA972A78980500E087E3 /* LikedMemesView.swift */; };
 		C2746ADE2A6C420100CB3888 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2746ADD2A6C420100CB3888 /* MainView.swift */; };
 		C2835A542A6C4DDE0048C961 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2835A532A6C4DDE0048C961 /* HomeView.swift */; };
 		C29C92822A6B970E002D7DAB /* VentSocialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C92812A6B970E002D7DAB /* VentSocialApp.swift */; };
@@ -37,6 +39,8 @@
 		C262A4842A6E0E210056FB81 /* UserMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMessagesView.swift; sourceTree = "<group>"; };
 		C262A4862A6E12040056FB81 /* LikedPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPostsView.swift; sourceTree = "<group>"; };
 		C262A4882A6F548A0056FB81 /* UserCreatePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreatePost.swift; sourceTree = "<group>"; };
+		C264DA952A785EDC00E087E3 /* prsctice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prsctice.swift; sourceTree = "<group>"; };
+		C264DA972A78980500E087E3 /* LikedMemesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedMemesView.swift; sourceTree = "<group>"; };
 		C2746ADD2A6C420100CB3888 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C2835A532A6C4DDE0048C961 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C29C927E2A6B970E002D7DAB /* VentSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VentSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +73,14 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		C264DA902A785C3400E087E3 /* Prac */ = {
+			isa = PBXGroup;
+			children = (
+				C264DA952A785EDC00E087E3 /* prsctice.swift */,
+			);
+			path = Prac;
+			sourceTree = "<group>";
+		};
 		C29C92752A6B970E002D7DAB = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +100,7 @@
 		C29C92802A6B970E002D7DAB /* VentSocial */ = {
 			isa = PBXGroup;
 			children = (
+				C264DA902A785C3400E087E3 /* Prac */,
 				C262A4812A6DB5E30056FB81 /* Util */,
 				C29C92962A6B9759002D7DAB /* Models */,
 				C29C92952A6B9750002D7DAB /* ViewModels */,
@@ -120,6 +133,7 @@
 				C262A47F2A6DB4620056FB81 /* UserView.swift */,
 				C262A4842A6E0E210056FB81 /* UserMessagesView.swift */,
 				C262A4862A6E12040056FB81 /* LikedPostsView.swift */,
+				C264DA972A78980500E087E3 /* LikedMemesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -211,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C264DA982A78980600E087E3 /* LikedMemesView.swift in Sources */,
 				C262A47E2A6DB3310056FB81 /* SearchbarView.swift in Sources */,
 				C29C928B2A6B970F002D7DAB /* Persistence.swift in Sources */,
 				C25E6E242A6D712800542BBF /* PostModel.swift in Sources */,
@@ -224,6 +239,7 @@
 				C29C92822A6B970E002D7DAB /* VentSocialApp.swift in Sources */,
 				C25E6E262A6D718200542BBF /* PostViewModel.swift in Sources */,
 				C262A4832A6DB5F60056FB81 /* UserInfoView.swift in Sources */,
+				C264DA962A785EDC00E087E3 /* prsctice.swift in Sources */,
 				C29C92982A6B977B002D7DAB /* OnboardingView.swift in Sources */,
 				C29C928E2A6B970F002D7DAB /* VentSocial.xcdatamodeld in Sources */,
 				C262A4852A6E0E210056FB81 /* UserMessagesView.swift in Sources */,

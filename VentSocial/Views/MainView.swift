@@ -22,7 +22,8 @@ struct MainView: View {
                             .tabItem {
                                 Image(systemName: "house.fill")
                                 
-                            }.toolbarBackground(colorScheme == .dark ? Color.black : Color.white, for: .tabBar)
+                            }
+//                            .toolbarBackground(colorScheme == .dark ? Color.black : Color.white, for: .tabBar)
                             .tag(0)
                         
                         VStack {
@@ -31,7 +32,7 @@ struct MainView: View {
                         .tabItem {
                             Image(systemName: "magnifyingglass")
                         }
-                        .toolbarBackground(colorScheme == .dark ? Color.black : Color.white, for: .tabBar)
+//                        .toolbarBackground(colorScheme == .dark ? Color.black : Color.white, for: .tabBar)
                         .tag(1)
                         
                         
@@ -43,9 +44,10 @@ struct MainView: View {
                             
                             
                         }
-                        .toolbarBackground(colorScheme == .dark ? Color.black : Color.white, for: .tabBar)
+//                        .toolbarBackground(colorScheme == .dark ? Color.black : Color.white, for: .tabBar)
                         .tag(2)
                     }
+//                    .toolbarBackground(colorScheme == .dark ? Color.black : Color.white, for: .tabBar) 
                     .accentColor(colorScheme == .dark ? Color.white : Color.black)
                     
                 }
@@ -64,40 +66,51 @@ struct MainView_Previews: PreviewProvider {
 }
 
 struct TopBar: View {
+    @Environment (\.colorScheme) var colorScheme
+    @ObservedObject var viewModel:FeedImageViewModel
+    @State private var isPresented: Bool  = false
     var body: some View {
         HStack{
             Text("Vent Social").font(.system(size: 30)).bold()
             Spacer()
-            NavigationLink(destination: UserMessagesView()) {
+            NavigationLink(destination: LikedMemesView(viewModel:viewModel)) {
                 Label(
                     title: { Text("Liked Posts") },
                     icon: { Image(systemName: "heart").font(.system(size: 25)) }
-                ).foregroundColor(.white)
+                )
                     .labelStyle(.iconOnly)
-                //                    .foregroundColor(.white)
+                
             }
             
             Spacer().frame(width: 10)
-            //            NavigationLink("Hello") {
-            //                UserMessagesView()
-            //            }
-            NavigationLink(destination: UserMessagesView()) {
+          
+            NavigationLink(destination: UserMessagesView(viewModel: viewModel)) {
                 Label(
                     title: { Text("Messages") },
                     icon: { Image(systemName: "message").font(.system(size: 25)) }
-                ).foregroundColor(.white)
+                )
                     .labelStyle(.iconOnly)
             }
+            Image(systemName: "plus").font(.system(size: 25))
+                .onTapGesture {
+                    isPresented = !isPresented
+                }
+                .sheet(isPresented: $isPresented) {
+                    UserCreatePost(viewModel: viewModel)
+                        .presentationDetents([.medium,.large])
+                }
         }.padding(.horizontal)
+            .foregroundColor(colorScheme == .dark ? .white : .black)
     }
 }
 struct UserTopBar: View {
+    @ObservedObject var viewModel:FeedImageViewModel
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         HStack{
             Text("DesiRorie123").font(.system(size: 25)).bold()
             Spacer()
-            NavigationLink(destination: UserMessagesView()) {
+            NavigationLink(destination: UserMessagesView(viewModel: viewModel)) {
                 Label(
                     title: { Text("Liked Posts") },
                     icon: { Image(systemName: "heart").font(.system(size: 25)) }
@@ -107,7 +120,7 @@ struct UserTopBar: View {
             
             Spacer().frame(width: 10)
           
-            NavigationLink(destination: UserMessagesView()) {
+            NavigationLink(destination: UserMessagesView(viewModel: viewModel)) {
                 Label(
                     title: { Text("Messages") },
                     icon: { Image(systemName: "message").font(.system(size: 25)) }

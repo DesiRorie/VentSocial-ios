@@ -26,51 +26,52 @@ struct SearchbarView: View {
     ]
     
     var body: some View {
-        VStack {
-            UserTopBar()
-                .padding(.horizontal,10)
-            HStack {
-                Text("Explore")
-                    .bold()
-                    .font(.subheadline)
-                
-            }.padding(.vertical,10)
-                
-            VStack{
-             ScrollView(showsIndicators: false){
-                VStack { if !viewModel.allMemeImages.isEmpty{
-                    LazyVGrid(columns:columns,spacing: 10)
-                    {
-                        ForEach(viewModel.allMemeImages,id: \.self) { memeImage in
-                            ZStack{
-                                Rectangle()
-                                Image(uiImage: memeImage)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .scaleEffect(selectedImage == memeImage ? scale : 1)
-                                        .actionSheet(isPresented: $showActionSheet) {
-                                            ActionSheet(title: Text("Save Image"), buttons: [
-                                                .default(Text("Save")) {
-                                                    saveImageToPhotosAlbum(image: memeImage)
-                                                },
-                                                .cancel(Text("Cancel"))
-                                            ])
-                                        }
-                                    .frame(width: 133, height: 133)
+        NavigationStack {
+            VStack {
+                TopBar(viewModel: viewModel)
+                HStack {
+                    Text("Explore")
+                        .bold()
+                        .font(.subheadline)
+                    
+                }.padding(.vertical,10)
+                    
+                VStack{
+                 ScrollView(showsIndicators: false){
+                    VStack { if !viewModel.allMemeImages.isEmpty{
+                        LazyVGrid(columns:columns,spacing: 10)
+                        {
+                            ForEach(viewModel.allMemeImages,id: \.self) { memeImage in
+                                ZStack{
+                                    Rectangle()
+                                    Image(uiImage: memeImage)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .scaleEffect(selectedImage == memeImage ? scale : 1)
+                                            .actionSheet(isPresented: $showActionSheet) {
+                                                ActionSheet(title: Text("Save Image"), buttons: [
+                                                    .default(Text("Save")) {
+                                                        saveImageToPhotosAlbum(image: memeImage)
+                                                    },
+                                                    .cancel(Text("Cancel"))
+                                                ])
+                                            }
+                                        .frame(width: 133, height: 133)
+                                }
+                                .zIndex(selectedImage == memeImage ? 1 : 0)
                             }
-                            .zIndex(selectedImage == memeImage ? 1 : 0)
+                        }
+                    }else{
+                        ProgressView()
+                    }
+                    }   .onAppear {
+                        Task{
+                            await   viewModel.fetchMemeImage()
+                            
                         }
                     }
-                }else{
-                    ProgressView()
                 }
-                }   .onAppear {
-                    Task{
-                        await   viewModel.fetchMemeImage()
-                        
-                    }
                 }
-            }
             }
         }
                                    }

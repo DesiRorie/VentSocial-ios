@@ -8,13 +8,18 @@
 import SwiftUI
 
 struct UserMessagesView: View {
+    @ObservedObject var viewModel:FeedImageViewModel
     var body: some View {
-        Text("User messages")
+        VStack{
+            Text("Show liked posts here here")
+            Spacer()
+            //display all liked images.
+        }.navigationTitle("Liked Posts").bold()
     }
 }
 
 struct UserMessagesView_Previews: PreviewProvider {
     static var previews: some View {
-        UserMessagesView()
+        UserMessagesView(viewModel: FeedImageViewModel())
     }
 }

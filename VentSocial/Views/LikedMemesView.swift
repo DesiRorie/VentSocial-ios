@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LikedPostsView: View {
+struct LikedMemesView: View {
     @ObservedObject var viewModel:FeedImageViewModel
     var columns =   [
         GridItem(.flexible(),spacing: 10),
@@ -28,12 +28,12 @@ struct LikedPostsView: View {
                     }
                 }
             }
-        }.navigationTitle("Liked Posts")
+        }.navigationTitle("Liked Memes")
     }
 }
 
-struct LikedPostsView_Previews: PreviewProvider {
+struct LikedMemesView_Previews: PreviewProvider {
     static var previews: some View {
-        LikedPostsView(viewModel: FeedImageViewModel())
+        LikedMemesView(viewModel: FeedImageViewModel())
     }
 }
