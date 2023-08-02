@@ -84,13 +84,13 @@ struct TopBar: View {
             
             Spacer().frame(width: 10)
           
-            NavigationLink(destination: UserMessagesView(viewModel: viewModel)) {
-                Label(
-                    title: { Text("Messages") },
-                    icon: { Image(systemName: "message").font(.system(size: 25)) }
-                )
-                    .labelStyle(.iconOnly)
-            }
+//            NavigationLink(destination: UserMessagesView(viewModel: viewModel)) {
+//                Label(
+//                    title: { Text("Messages") },
+//                    icon: { Image(systemName: "message").font(.system(size: 25)) }
+//                )
+//                    .labelStyle(.iconOnly)
+//            }
             Image(systemName: "plus").font(.system(size: 25))
                 .onTapGesture {
                     isPresented = !isPresented

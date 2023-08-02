@@ -17,6 +17,9 @@ struct LikedMemesView: View {
     var body: some View {
         VStack{
             ScrollView( showsIndicators: false) {
+                VStack{
+                 
+                }
                 LazyVGrid(columns: columns) {
                     ForEach(viewModel.LikedMemeStore, id: \.self) { likedMeme in
                         ZStack{
@@ -28,7 +31,7 @@ struct LikedMemesView: View {
                     }
                 }
             }
-        }.navigationTitle("Liked Memes")
+        }.navigationTitle(Text(viewModel.LikedMemeStore.isEmpty ? "No Liked Posts" : "Liked Posts").bold())
     }
 }
 

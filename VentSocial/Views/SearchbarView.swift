@@ -20,9 +20,9 @@ struct SearchbarView: View {
     
 @ObservedObject var viewModel:FeedImageViewModel
     var columns =   [
-        GridItem(.flexible(),spacing: 10),
-        GridItem(.flexible(),spacing: 10),
-        GridItem(.flexible(),spacing: 10),
+        GridItem(.flexible(),spacing: 5),
+        GridItem(.flexible(),spacing: 5),
+        GridItem(.flexible(),spacing: 5),
     ]
     
     var body: some View {
@@ -39,7 +39,7 @@ struct SearchbarView: View {
                 VStack{
                  ScrollView(showsIndicators: false){
                     VStack { if !viewModel.allMemeImages.isEmpty{
-                        LazyVGrid(columns:columns,spacing: 10)
+                        LazyVGrid(columns:columns,spacing: 5)
                         {
                             ForEach(viewModel.allMemeImages,id: \.self) { memeImage in
                                 ZStack{
@@ -56,7 +56,7 @@ struct SearchbarView: View {
                                                     .cancel(Text("Cancel"))
                                                 ])
                                             }
-                                        .frame(width: 133, height: 133)
+//                                        .frame(width: 133, height: 133)
                                 }
                                 .zIndex(selectedImage == memeImage ? 1 : 0)
                             }

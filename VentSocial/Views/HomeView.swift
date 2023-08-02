@@ -10,6 +10,8 @@ import SwiftUI
 struct HomeView: View {
     @ObservedObject var viewModel:FeedImageViewModel
     @Environment(\.colorScheme) var colorScheme
+    
+    
     var body: some View {
         NavigationStack {
             VStack{
@@ -21,8 +23,8 @@ struct HomeView: View {
                         .frame(height: 0.18)
                 }
                 Spacer()
-               
-                  
+                
+                
                     .font(.headline).bold()
                 TabView{
                     ScrollViewReader{ scrollProxy in
@@ -38,10 +40,29 @@ struct HomeView: View {
                                             Image(uiImage: image)
                                                 .resizable()
                                                 .scaledToFill()
-                                            Image(systemName: "heart")
-                                                .onTapGesture {
-                                                    viewModel.addLikedMeme(likedImage: image)
+                                            HStack {
+                                                Image(systemName: "heart.fill")
+                                                    .foregroundColor(viewModel.isMemeLiked(image: image) ? .red : colorScheme == .dark ? .white : .black)
+                                                    .animation(.easeOut(duration: 0.5), value: viewModel.isMemeLiked(image: image))
+                                              
+                                                  
+                                                
+                                                
+                                                
+                                                    .onTapGesture {withAnimation {
+                                                  
+                                                    }
+                                                     
+                                                        if viewModel.isMemeLiked(image: image) {
+                                                            viewModel.removeLikedMeme(likedImage: image)
+                                                        } else {
+                                                            viewModel.addLikedMeme(likedImage: image)
+                                                        }
                                                 }
+                                                    .padding(.vertical,2)
+                                                    .padding(.horizontal,10)
+                                                Spacer()
+                                            }
                                             
                                         }
                                         Spacer().frame(height: 25)
@@ -57,35 +78,35 @@ struct HomeView: View {
                             
                         }
                         .refreshable {
-                                await viewModel.refreshImages()
+                            await viewModel.refreshImages()
                         }
                         .tag(0)
                     }
-                
+                    
                     ScrollView(showsIndicators: false) {
                         VStack(){
                             LazyVStack {
                                 ForEach(viewModel.postsStore, id:\.self) { posts in
-                                  Text(posts)
+                                    Text(posts)
                                     Spacer().frame(height: 25)
                                 }
                             }
-
+                            
                         }
                         .onAppear{
                             viewModel.postsStore = viewModel.postsStore
                         }
-
+                        
                     }
                     .tag(1)
-                
+                    
                 }.tabViewStyle(.page(indexDisplayMode: .never))
-          
+                
             }.onAppear{
                 Task{
                     await viewModel.fetchImage()}
             }
-
+            
         }
     }
 }

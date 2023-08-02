@@ -11,6 +11,7 @@ import SwiftUI
 struct Meme: Identifiable {
     let id: String
     let url: URL
+ 
 }
 
 struct UserPost: Hashable,Identifiable{
@@ -33,15 +34,25 @@ class FeedImageViewModel: ObservableObject{
     @Published var allMemeImages:[UIImage] = []
     @Published var postsUserStore:[UserPost] = []
     @Published var LikedMemeStore:[UIImage] = []
+    @Published var imageIsLiked:[Bool] = []
+  
     
     enum CombinedItem:Hashable {
         case image(UIImage)
         case post(String)
     }
-
+    
     func addLikedMeme(likedImage:UIImage){
         LikedMemeStore.append(likedImage)
     }
+    func isMemeLiked(image: UIImage) -> Bool {
+            return LikedMemeStore.contains(image)
+        }
+    func removeLikedMeme(likedImage: UIImage) {
+           if let index = LikedMemeStore.firstIndex(of: likedImage) {
+               LikedMemeStore.remove(at: index)
+           }
+       }
     var combinedArray: [CombinedItem] {
         var array: [CombinedItem] = []
         array.append(contentsOf: imageStore.map(CombinedItem.image))
